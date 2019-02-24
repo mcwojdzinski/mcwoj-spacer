@@ -5,8 +5,10 @@
 </template>
 
 <script>
+/* eslint-disable */
+
 export default {
-  name: 'About'
+  name: "About"
 };
 </script>
 

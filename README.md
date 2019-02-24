@@ -1,4 +1,5 @@
 # mcwoj-spacer
+This app using NASA api to fetch images and display them 
 
 ## Project setup
 ```

@@ -1,22 +1,17 @@
 <template>
   <div class="wrapper">
-    <div class="search">
-      <label for="search">Search</label>
-      <input v-model="searchValue" @input="handleInput" id="search" name="search">
-      <ul>
-        <li v-for="result in results" :key="result.data[0].nasa_id">
-          <p>{{ result.data[0].description }} </p>
-        </li>
-      </ul>
-    </div>
+    <Claim/>
+    <SearchInput/>
   </div>
 </template>
 
 <script>
-import Vue from 'vue';
-import axios from 'axios';
-import VueAxios from 'vue-axios';
+import Vue from "vue";
+import axios from "axios";
+import VueAxios from "vue-axios";
 import debounce from "lodash.debounce";
+import Claim from "@/components/Claim";
+import SearchInput from "@/components/SearchInput";
 
 Vue.use(VueAxios, axios);
 const API = "https://images-api.nasa.gov/search";
@@ -24,15 +19,20 @@ export default {
   name: "Search",
   data() {
     return {
-      searchValue: '',
-      results: [],
+      searchValue: "",
+      results: []
     };
+  },
+  components: {
+    Claim,
+    SearchInput
   },
   methods: {
     /* exlin-disable */
     handleInput: debounce(function() {
       {
-        axios.get(`${API}?q=${this.searchValue}&media_type=image`)
+        axios
+          .get(`${API}?q=${this.searchValue}&media_type=image`)
           .then(response => {
             this.results = response.data.collection.items;
           })
@@ -49,27 +49,15 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin: 0;
   padding: 30px;
   width: 100%;
-}
-.search {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-}
-
-label {
-  font-size: 25px;
-  text-align: center;
-  font-family: Montserrat, sans-serif;
-}
-
-input {
-  height: 30px;
-  border: none;
-  border-bottom: 1px solid black;
-  outline: none;
+  background-image: url("../assets/backgroundImage.jpg");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
 }
 </style>
-

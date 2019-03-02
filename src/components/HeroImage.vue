@@ -21,7 +21,7 @@ export default {
 
 .BackgroundImageWrapper::after {
   content: "";
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   position: absolute;
   top: 0;
   left: 0;

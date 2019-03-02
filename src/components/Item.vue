@@ -1,5 +1,5 @@
 <template>
-  <div :style="style" class="item"></div>
+  <div :style="style" class="item"/>
 </template>
 <script>
 export default {
@@ -30,9 +30,8 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50%;
-
   @media (min-width: 768px) {
-    min-width: 25vw;
+    width: 25vw;
   }
 }
 </style>
